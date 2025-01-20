@@ -1,23 +1,71 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaumenzauber</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lieferdienst</title>
 
-    <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./style/standard.css">
-    <link rel="stylesheet" href="./style/fonts.css">
-    <link rel="stylesheet" href="./style/assets.css">
+    <link
+      rel="shortcut icon"
+      href="./assets/icons/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./styles//standard.css" />
+    <link rel="stylesheet" href="./styles//fonts.css" />
+    <link rel="stylesheet" href="./styles//assets.css" />
+    <link rel="stylesheet" href="./styles/basket.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <script src="./script.js" defer></script>
-</head>
-<body>
+    <script src="./scripts/db.js" defer></script>
+    <script src="./scripts/templates.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <header>
-        <img src="assets/img/Logo.png" alt="Logo">
-        <h1>Gaumenzauber</h1>
+      <nav>
+        <img src="assets/img/Logo.png" alt="Logo" />
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Warenkorb</a>
+            <a class="dropdown-item" href="#">Hauptspeisen</a>
+            <a class="dropdown-item" href="#">Beilagen</a>
+            <a class="dropdown-item" href="#">Desserts</a>
+            <a class="dropdown-item" href="#">Getränke</a>
+          </div>
+        </div>
+      </nav>
     </header>
-    <main></main>
+    <main>
+      <div class="hero_container">
+        <div class="hero_img"></div>
+        <h1>Gaumenzauber</h1>
+        <span>Bewertung (4.5 von 5 Sternen)</span>
+      </div>
+      <div class="categories_container_outer">
+        <div class="categories_container" id="categories_container">Kategorien</div>
+      </div>
+
+    </main>
     <footer></footer>
-</body>
+  </body>
 </html>
