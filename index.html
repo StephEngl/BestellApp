@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OrderHero</title>
+    <title>PlantHero</title>
 
     <link
       rel="shortcut icon"
@@ -39,25 +39,41 @@
     <main>
       <div class="content_wrapper">
         <div class="hero_container">
-          <div class="hero_img"></div>
+          <div class="restaurant_logo_wrapper">
+            <div class="hero_img"></div>
+            <img class="restaurant_logo" src="assets/icons/Logo.png" alt="" />
+          </div>
           <div class="hero_description">
-            <h1>Mitternachtssonne</h1>
-            <span class="rating"
-              >Bewertung
-              <img src="assets/icons/stars.png" alt="Viereinhalb Sterne"
-            /></span>
+            <h2>Mitternachtssonne</h2>
+            <span>Nordisches Restaurant mit Seele - Vegetarische Küche unter Mitternachtssonne</span>
+            <div class="restaurant_description">
+              <span class="rating"
+                ><img
+                  src="assets/icons/ratingStar.svg"
+                  alt="Viereinhalb Sterne"
+                /><b>4,5</b> (250+)</span
+              >
+              <span class="badge badge_style"
+                ><img src="assets/icons/cart.svg" alt="" />Mind. 25€</span
+              >
+              <span class="badge badge_style"
+                ><img src="assets/icons/deliveryIcon.svg" alt="" />3,50€</span
+              >
+            </div>
+
           </div>
         </div>
-        <div class="categories_wrapper" id="categories_wrapper">
-            Kategorien
-        </div>
+        <div class="categories_wrapper" id="categories_wrapper">Kategorien</div>
         <div class="card_container" id="card_container"></div>
       </div>
       <div class="cart_wrapper">
         <div class="cart" id="cart">
-          <h2>Warenkorb</h2>
+          <h3>Warenkorb</h3>
+          <div class="emptyCart">
+            Grüner als unser Menü ist nur dein leerer Warenkorb. Lass uns das
+            ändern!
+          </div>
         </div>
-
       </div>
     </main>
     <footer>

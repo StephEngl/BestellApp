@@ -34,6 +34,7 @@ header {
   position: sticky;
   top: 0;
   justify-content: space-between;
+  z-index: 10;
 }
 
 nav > img {
@@ -76,9 +77,15 @@ main {
   margin: var(--main-margin);
 }
 
+.restaurant_description {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .rating {
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
   gap: 8px;
 }

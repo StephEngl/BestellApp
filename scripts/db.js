@@ -1,3 +1,12 @@
+const starter = [
+  {
+    "id": "dr_3",
+    "name": "Nypon Soppa",
+    "price": 3.8,
+    "description": "Warme oder kalte Hagebuttensuppe, reich an Vitamin C"
+  },
+]
+
 const maindishes = [
   {
     "id": "main_1",
@@ -82,9 +91,9 @@ const drinks = [
   },
   {
     "id": "dr_3",
-    "name": "Nypon Soppa",
-    "price": 3.8,
-    "description": "Warme oder kalte Hagebuttensuppe, reich an Vitamin C"
+    "name": "Villbrygg, verschiedene Sorten",
+    "price": 3.5,
+    "description": "Getränke basieren auf wilden Pflanzen und Kräutern, nachhaltig hergestellt"
   },
   {
     "id": "dr_4",
