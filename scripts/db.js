@@ -1,93 +1,102 @@
 const maindishes = [
   {
     "id": "main_1",
-    "name": "Exotische Gemüsepfanne",
-    "price": 14.9,
-    "description": "mit Tofu, getrockneten Aprikosen, Linsen und Paprika"
+    "name": "Vegane Köttbullar mit Lingonberry-Sauce",
+    "price": 8.5,
+    "description": "Pflanzliche Version der klassischen schwedischen Fleischbällchen, serviert mit süß-saurer Preiselbeersauce"
   },
   {
     "id": "main_2",
-    "name": "Linguine mit asiatischer Kürbissauce",
-    "price": 13.5,
-    "description": "und marinierten Shiitake-Pilzen"
+    "name": "Vegetarische Pytt i Panna",
+    "price": 9.2,
+    "description": "Traditioneller Eintopf mit gewürfelten Kartoffeln, saisonalem Gemüse und pflanzlichem Protein"
   },
   {
     "id": "main_3",
-    "name": "Di San Xian",
-    "price": 15.8,
-    "description": "Chinesisches Gericht mit frittierten Kartoffel- und Auberginenwürfeln"
+    "name": "Karelische Piroggen mit Karottenfüllung",
+    "price": 7.8,
+    "description": "Knusprige Teigtaschen gefüllt mit würzigem Karottenpüree, eine finnische Spezialität"
   },
   {
     "id": "main_4",
-    "name": "Mediterrane Quinoa-Pfanne",
-    "price": 15.6,
-    "description": "Mit gegrilltem Gemüse, Feta-Käse, Oliven und frischem Basilikum"
+    "name": "Hafer-Risotto mit Spargel und Erbsen",
+    "price": 10.5,
+    "description": "Cremiges Risotto aus nordischem Hafer, garniert mit knackigem Frühlingsgemüse"
   }
 ]
 
 const sides = [
   {
     "id": "sides_1",
-    "name": "Geröstete Cashewkerne",
-    "price": 3.5
+    "name": "Gurkensalat",
+    "price": 3.5,
+    "description": "Erfrischender Salat aus dünn geschnittenen Gurken mit Dill und veganer Crème fraîche"
   },
   {
     "id": "sides_2",
-    "name": "Minz-Joghurtsoße",
-    "price": 2.8
+    "name": "Rote Bete-Salat",
+    "price": 4.2,
+    "description": "Würziger Salat aus gekochten Roten Beten, Äpfeln und Walnüssen"
   },
   {
     "id": "sides_3",
-    "name": "Knusprige Salbeiblätter",
-    "price": 3.2
+    "name": "Knäckebrot",
+    "price": 1.5,
+    "description": "Traditionelles, knuspriges schwedisches Fladenbrot aus Vollkornmehl"
   }
 ]
 
 const desserts = [
   {
     "id": "des_1",
-    "name": "Kokos Panna cotta",
-    "price": 6.9,
-    "description": "mit marinierten Mangos"
+    "name": "Veganer Blaubeerkuchen",
+    "price": 4.8,
+    "description": "Saftiger Kuchen mit wilden nordischen Blaubeeren"
   },
   {
     "id": "des_2",
-    "name": "Gebackene Ananasringe",
-    "price": 5.8
+    "name": "Rhabarber-Törtchen mit Baiser",
+    "price": 5.2,
+    "description": "Süß-saures Törtchen mit karamellisiertem Rhabarber und fluffigem Baiser"
   },
   {
     "id": "des_3",
-    "name": "Exotischer Wintersalat",
-    "price": 7.5,
-    "description": "mit Müsli-Crunch"
+    "name": "Frozen Skyr mit Schwarzen Johannisbeeren",
+    "price": 5.5,
+    "description": "Cremiges, gefrorenes Skyr-Dessert mit fruchtigen schwarzen Johannisbeeren"
   }
 ]
 
 const drinks = [
   {
     "id": "dr_1",
-    "name": "Ingwer-Kokosmilch-Drink",
-    "price": 4.5
+    "name": "Lingondricka",
+    "price": 3.2,
+    "description": "Erfrischender, leicht herber Preiselbeersaft"
   },
   {
     "id": "dr_2",
-    "name": "Frische Zitronen-Minze-Limonade",
-    "price": 3.8
+    "name": "Flädersaft",
+    "price": 3.5,
+    "description": "Holunderblütensirup mit Wasser"
   },
   {
     "id": "dr_3",
-    "name": "Asiatischer Kräutertee",
-    "price": 3.2
+    "name": "Nypon Soppa",
+    "price": 3.8,
+    "description": "Warme oder kalte Hagebuttensuppe, reich an Vitamin C"
   },
   {
     "id": "dr_4",
-    "name": "Tropischer Aprikosen-Smoothie",
-    "price": 4.9
+    "name": "Julmust",
+    "price": 3.2,
+    "description": "alkoholfreies Malzgetränk, besonders zur Weihnachtszeit"
   },
   {
     "id": "dr_5",
-    "name": "Kokos-Ingwer-Wasser",
-    "price": 3.5
+    "name": "Blåbärssoppa",
+    "price": 3.8,
+    "description": "Traditionelle schwedische Blaubeersuppe, kann warm oder kalt serviert werden"
   }
 ]
 

@@ -27,6 +27,14 @@ function renderCategories() {
   }
 }
 
+function renderDishes(category) {
+  for (let indexDishes = 0; indexDishes < category.length; indexDishes++) {
+    let dish = document.getElementById("dish_" + indexDishes);
+    dish = "";
+    
+  }
+}
+
 function setCategoryImage(index) {
     console.log(document.getElementById("card_image"));
     console.log(categoryImages[index]);
