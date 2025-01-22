@@ -1,20 +1,11 @@
 let keysMyDishes = Object.keys(myDishes);
 
 function onInit() {
+  renderCategoriesToSlider();
   renderCategories();
-  renderDishes();
 }
 
-function renderDishes() {
-  let cardContentRef = document.getElementById("card_container");
-  cardContentRef.innerHTML = "";
-  for (let indexCard = 0; indexCard < keysMyDishes.length; indexCard++) {
-    cardContentRef.innerHTML += getDishesTemplate(indexCard);
-    // setCategoryImage(indexCard);
-  }
-}
-
-function renderCategories() {
+function renderCategoriesToSlider() {
   let category = document.getElementById("categories_wrapper");
   category.innerHTML = "";
   for (
@@ -22,29 +13,36 @@ function renderCategories() {
     indexCategory < Object.keys(myDishes).length;
     indexCategory++
   ) {
-    // let capitalizedFirstLetter = capitalizeFirstLetter(keysMyDishes[indexCategory]);
-    document.getElementById("categories_wrapper").innerHTML += getCategoriesTemplate(indexCategory) 
+    category.innerHTML += getCategorySliderTemplate(indexCategory) 
   }
 }
 
-function renderDishes(category) {
-  for (let indexDishes = 0; indexDishes < category.length; indexDishes++) {
-    let dish = document.getElementById("dish_" + indexDishes);
-    dish = "";
-    
+function renderCategories() {
+  let cardContentRef = document.getElementById("card_container");
+  cardContentRef.innerHTML = "";
+  for (let indexCard = 0; indexCard < keysMyDishes.length; indexCard++) {
+    cardContentRef.innerHTML += getDishCardsTemplate(indexCard);
+    renderDishes(keysMyDishes[indexCard], indexCard);
   }
 }
 
-function setCategoryImage(index) {
-    console.log(document.getElementById("card_image"));
-    console.log(categoryImages[index]);
-    
-document.getElementById("card_image").src = categoryImages[index];
+function renderDishes(category, indexCard) {
+  let dish = document.getElementById("dishes_" + indexCard);
+  dish.innerHTML = "";
+  for (let indexDishes = 0; indexDishes < myDishes[category].length; indexDishes++) {    
+    dish.innerHTML += getDishesTemplate(indexDishes, category)
+  }
 }
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+function addToCart(index) {
+
 }
+
+// function capitalizeFirstLetter(string) {
+//   return string.charAt(0).toUpperCase() + string.slice(1);
+// }
+
+
 
 // Local Storage
 function saveToLocalStorage() {

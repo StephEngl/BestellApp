@@ -101,10 +101,10 @@ const drinks = [
 ]
 
 const myDishes = {
-  maindishes: maindishes,
-  sides: sides,
-  desserts: desserts,
-  drinks: drinks,
+  Hauptgerichte: maindishes,
+  Beilagen: sides,
+  Desserts: desserts,
+  Getränke: drinks,
 }
 
 const categoryImages = [

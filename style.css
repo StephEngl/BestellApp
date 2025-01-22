@@ -1,19 +1,30 @@
 :root {
   --main-margin: 24px;
   --max-width: 1440px;
-  --mark-color: #8ABAD3;
-  --side-color: #7DB46C;
+  --mark-color: rgb(25 26 26);
+  --side-color: #7db46c;
+  --nordicWhite: #fcf6f5;
+  --background-color: rgb(42, 44, 44);
 }
 
 body {
-  font-family: "Comfortaa";
+  font-family: "Comfortaa" !important;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--mark-color) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: bold !important;
 }
 
 header {
-  background-color: var(--mark-color);
+  background-color: rgb(20, 20, 20);
   color: white;
   display: flex;
   align-items: center;
@@ -41,6 +52,7 @@ nav {
   flex: 1;
 }
 
+/* Main Section */
 main {
   width: 100%;
   display: flex;
@@ -53,6 +65,8 @@ main {
   display: flex;
   flex-direction: column;
   width: calc(100% - 300px);
+  background-color: var(--background-color);
+  color: var(--nordicWhite);
 }
 
 .hero_description {
@@ -73,14 +87,17 @@ main {
   height: 24px;
 }
 
+/* Card Section */
 .categories_wrapper {
-  background-color: rgba(47, 79, 79, 0.2);
+  background-color: var(--mark-color);
   width: 100%;
   height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 36px;
+  padding: 0px 24px;
+  position: sticky;
+  top: 112px;
 }
 
 .card_container {
@@ -91,7 +108,15 @@ main {
 
 .card_style {
   margin: var(--main-margin);
+}
+
+.position_static {
   position: static !important;
+}
+
+.image_dimensions {
+  height: 256px;
+  object-fit: cover;
 }
 
 /*Footer Section */
@@ -99,6 +124,7 @@ main {
 footer {
   height: 56px;
   width: 100%;
+  color: var(--nordicWhite);
   background-color: var(--mark-color);
 }
 

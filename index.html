@@ -34,25 +34,6 @@
     <header>
       <nav>
         <img src="assets/icons/logo_orderHero.png" alt="Logo" />
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Menü
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Warenkorb</a>
-            <a class="dropdown-item" href="#">Hauptspeisen</a>
-            <a class="dropdown-item" href="#">Beilagen</a>
-            <a class="dropdown-item" href="#">Desserts</a>
-            <a class="dropdown-item" href="#">Getränke</a>
-          </div>
-        </div>
       </nav>
     </header>
     <main>
@@ -73,7 +54,10 @@
         <div class="card_container" id="card_container"></div>
       </div>
       <div class="cart_wrapper">
-        <h2>Warenkorb</h2>
+        <div class="cart" id="cart">
+          <h2>Warenkorb</h2>
+        </div>
+
       </div>
     </main>
     <footer>
