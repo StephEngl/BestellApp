@@ -1,4 +1,12 @@
 let keysMyDishes = Object.keys(myDishes);
+let cart = [];
+// [
+  // {
+  //   dish: "Gericht 1",
+  //   amount: 1,
+  //   price: 5.9
+  // }
+// ];
 
 function onInit() {
   renderCategoriesToSlider();
@@ -34,9 +42,19 @@ function renderDishes(category, indexCard) {
   }
 }
 
-function addToCart(index) {
+function addToCart(index, category) {
+  document.getElementById("empty_cart").classList.add("d-none");
+  let fillCart = document.getElementById("fill_cart");
+  fillCart.innerHTML = "";
 
-}
+  myDishes[category][index].amount ++
+  cart.push({
+    id: myDishes[category][index].id,
+    dish: myDishes[category][index].name,
+    amount: myDishes[category][index].amount,
+    price: myDishes[category][index].price
+  });
+  }
 
 // function capitalizeFirstLetter(string) {
 //   return string.charAt(0).toUpperCase() + string.slice(1);

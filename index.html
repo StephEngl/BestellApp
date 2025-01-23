@@ -45,7 +45,7 @@
           </div>
           <div class="hero_description">
             <h2>Mitternachtssonne</h2>
-            <span>Nordisches Restaurant mit Seele - Vegetarische Küche unter Mitternachtssonne</span>
+            <span class="mb-2">Nordisches Restaurant mit Seele - Vegetarische Küche unter der Mitternachtssonne</span>
             <div class="restaurant_description">
               <span class="rating"
                 ><img
@@ -53,11 +53,11 @@
                   alt="Viereinhalb Sterne"
                 /><b>4,5</b> (250+)</span
               >
-              <span class="badge badge_style"
-                ><img src="assets/icons/cart.svg" alt="" />Mind. 25€</span
+              <div class="badge badge_style"
+                ><img src="assets/icons/cart.svg" alt="" />Mind. 25€</div
               >
-              <span class="badge badge_style"
-                ><img src="assets/icons/deliveryIcon.svg" alt="" />3,50€</span
+              <div class="badge badge_style"
+                ><img src="assets/icons/deliveryIcon.svg" alt="" />3,50€</div
               >
             </div>
 
@@ -68,11 +68,15 @@
       </div>
       <div class="cart_wrapper">
         <div class="cart" id="cart">
-          <h3>Warenkorb</h3>
-          <div class="emptyCart">
+          <div class="p-3 border-bottom">
+            <h3 class="d-flex justify-content-center">Warenkorb</h3>
+          </div>
+          
+          <div class="empty_cart" id="empty_cart">
             Grüner als unser Menü ist nur dein leerer Warenkorb. Lass uns das
             ändern!
           </div>
+          <div class="filled_cart" id="fill_cart"></div>
         </div>
       </div>
     </main>
