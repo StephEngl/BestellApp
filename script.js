@@ -1,12 +1,5 @@
 let keysMyDishes = Object.keys(myDishes);
 let cart = [];
-// [
-  // {
-  //   dish: "Gericht 1",
-  //   amount: 1,
-  //   price: 5.9
-  // }
-// ];
 
 function onInit() {
   renderCategoriesToSlider();
@@ -18,10 +11,10 @@ function renderCategoriesToSlider() {
   category.innerHTML = "";
   for (
     let indexCategory = 0;
-    indexCategory < Object.keys(myDishes).length;
+    indexCategory < keysMyDishes.length;
     indexCategory++
   ) {
-    category.innerHTML += getCategorySliderTemplate(indexCategory) 
+    category.innerHTML += getCategorySliderTemplate(indexCategory);
   }
 }
 
@@ -37,30 +30,71 @@ function renderCategories() {
 function renderDishes(category, indexCard) {
   let dish = document.getElementById("dishes_" + indexCard);
   dish.innerHTML = "";
-  for (let indexDishes = 0; indexDishes < myDishes[category].length; indexDishes++) {    
-    dish.innerHTML += getDishesTemplate(indexDishes, category)
+  for (
+    let indexDishes = 0;
+    indexDishes < myDishes[category].length;
+    indexDishes++
+  ) {
+    dish.innerHTML += getDishesTemplate(indexDishes, category);
   }
 }
 
 function addToCart(index, category) {
   document.getElementById("empty_cart").classList.add("d-none");
-  let fillCart = document.getElementById("fill_cart");
-  fillCart.innerHTML = "";
+  let idToFind = myDishes[category][index].id;
+  const cartIndex = getCartDishIndex(idToFind);
+  if (-1 == cartIndex) {
+    pushToCartArray(index, category);
+  } else {
+    increaseCartDishAmount(cartIndex);
+  }
+  renderCart();
+}
 
-  myDishes[category][index].amount ++
+function pushToCartArray(index, category) {
   cart.push({
     id: myDishes[category][index].id,
     dish: myDishes[category][index].name,
-    amount: myDishes[category][index].amount,
-    price: myDishes[category][index].price
+    amount: 1,
+    price: myDishes[category][index].price,
   });
+}
+
+function renderCart() {
+  let fillCart = document.getElementById("fill_cart");
+  fillCart.innerHTML = "";
+  for (let indexCart = 0; indexCart < cart.length; indexCart++) {
+    fillCart.innerHTML += getCartDishesTemplate(indexCart);
   }
+}
 
-// function capitalizeFirstLetter(string) {
-//   return string.charAt(0).toUpperCase() + string.slice(1);
-// }
+function getCartDishIndex(idToFind) {
+  let cartElement = cart.find((cartObj) => {return cartObj.id === idToFind;});
+  if (undefined === cartElement) {
+    return -1;
+  }
+  return cart.indexOf(cartElement);
+}
 
+function increaseCartDishAmount(indexCart) {
+  cart[indexCart].amount++;
+  renderCart();
+}
 
+function decreaseCartDishAmount(indexCart) {
+  if (1 < cart[indexCart].amount) {
+    cart[indexCart].amount--;
+    renderCart();
+  }
+  else {
+    deleteDishFromCart(indexCart);
+  }
+}
+
+function deleteDishFromCart(indexCart) {
+  cart.splice(indexCart, 1);
+  renderCart();
+}
 
 // Local Storage
 function saveToLocalStorage() {

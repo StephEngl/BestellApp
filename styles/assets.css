@@ -44,3 +44,12 @@
   height: 24px;
   margin-right: 12px;
 }
+
+
+.delete_from_cart {
+  cursor: pointer;
+}
+
+.cart_quantity_btn {
+  cursor: pointer;
+}
