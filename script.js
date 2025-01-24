@@ -41,6 +41,7 @@ function renderDishes(category, indexCard) {
 
 function addToCart(index, category) {
   document.getElementById("empty_cart").classList.add("d-none");
+  document.getElementById("fill_cart_container").classList.remove("d-none");
   let idToFind = myDishes[category][index].id;
   const cartIndex = getCartDishIndex(idToFind);
   if (-1 == cartIndex) {
@@ -49,6 +50,7 @@ function addToCart(index, category) {
     increaseCartDishAmount(cartIndex);
   }
   renderCart();
+  getSubtotal();
 }
 
 function pushToCartArray(index, category) {
@@ -66,6 +68,7 @@ function renderCart() {
   for (let indexCart = 0; indexCart < cart.length; indexCart++) {
     fillCart.innerHTML += getCartDishesTemplate(indexCart);
   }
+  document.getElementById("costs_of_order").innerHTML = getCartCostTemplate()
 }
 
 function getCartDishIndex(idToFind) {
@@ -79,6 +82,7 @@ function getCartDishIndex(idToFind) {
 function increaseCartDishAmount(indexCart) {
   cart[indexCart].amount++;
   renderCart();
+  getSubtotal();
 }
 
 function decreaseCartDishAmount(indexCart) {
@@ -89,11 +93,20 @@ function decreaseCartDishAmount(indexCart) {
   else {
     deleteDishFromCart(indexCart);
   }
+  getSubtotal();
 }
 
 function deleteDishFromCart(indexCart) {
   cart.splice(indexCart, 1);
   renderCart();
+}
+
+function getSubtotal() {
+  let subtotal = 0;
+  for (let indexSub = 0; indexSub < cart.length; indexSub++) {
+    subtotal += cart[indexSub].amount * cart[indexSub].price
+  }
+  document.getElementById("subtotal").innerHTML = subtotal.toFixed(2).replace('.', ',');
 }
 
 // Local Storage

@@ -55,7 +55,7 @@
                 /><b>4,5</b> (250+)</span
               >
               <div class="badge badge_style"
-                ><img src="assets/icons/cart.svg" alt="" />Mind. 25€</div
+                ><img src="assets/icons/cart.svg" alt="" />Mind. 21€</div
               >
               <div class="badge badge_style"
                 ><img src="assets/icons/deliveryIcon.svg" alt="" />3,50€</div
@@ -68,20 +68,35 @@
         <div class="card_container" id="card_container"></div>
       </div>
       <div class="cart_wrapper">
-        <div class="cart" id="cart">
-          <div class="p-3 border-bottom">
+        <div class="cart w-100" id="cart">
+          <div class="p-3 border-bottom border-dark">
             <h3 class="d-flex justify-content-center">Warenkorb</h3>
           </div>
           
-          <div class="empty_cart" id="empty_cart">
-            <div class="cart_icon d-flex justify-content-center align-items-center"><img src="assets/icons/cart.svg" alt="Warenkorb-Symbol"></div>
-            <p>Grüner als unser Menü ist nur dein leerer Warenkorb. Lass uns das
+          <div class="empty_cart border-bottom border-dark p-3 d-flex flex-column align-items-center" id="empty_cart">
+            <div class="cart_icon d-flex justify-content-center align-items-center">
+              <img src="assets/icons/cart.svg" alt="Warenkorb-Symbol">
+            </div>
+            <p class="text-center">Grüner als unser Menü ist nur dein leerer Warenkorb. Lass uns das
               ändern!</p>
           </div>
-          <div class="filled_cart" id="fill_cart"></div>
+          <div class="d-none d-flex flex-column align-items-center" id="fill_cart_container">
+            <div class="delivery_or_pickup badge rounded-pill text-bg-secondary d-flex" id="delivery_or_pickup">
+              <div class="delivery d-flex"><img src="assets/icons/deliveryIcon.svg" alt=""><p>Lieferung</p></div>
+              <div class="pickup"><img src="assets/icons/deliveryIcon.svg" alt=""><p>Abholung</p></div>
+            </div>
+            <div class="filled_cart w-100" id="fill_cart"></div>
+            <div class="border-bottom border-dark p-3 w-100" id="costs_of_order"></div>
+            <button class="btn btn-secondary btn-lg d-flex align-items-center gap-3">
+              <p class="mb-0">Bezahlen</p>
+              <p class="mb-0" id="sum_button">50€</p>
+            </button>
+          </div>
         </div>
       </div>
     </main>
+
+    <!-- Footer Section -->
     <footer>
       <div class="footer_wrapper">
         <p>&#169 2024 by Stephanie Englberger</p>

@@ -13,6 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: var(--mark-color) !important;
+  color: var(--nordicWhite);
 }
 
 h1,
@@ -21,6 +22,10 @@ h3,
 h4,
 h5 {
   font-weight: bold !important;
+}
+
+.text_color_white {
+  color: var(--nordicWhite) !important;
 }
 
 header {
@@ -79,9 +84,8 @@ main {
 
 .restaurant_description {
   display: flex;
-  width: 40%;
-  justify-content: space-between;
   align-items: center;
+  gap: 36px;
 }
 
 .rating {
@@ -113,8 +117,17 @@ main {
   align-items: center;
 }
 
+.change_color_on_hover:hover {
+  background-color: rgb(71, 71, 71) !important;
+}
+
 .card_style {
   margin: var(--main-margin);
+  background-color: #595959 !important;
+}
+
+.bg_color_grey {
+  background-color: rgb(146, 143, 143) !important;
 }
 
 .position_static {

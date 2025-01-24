@@ -17,6 +17,13 @@
   padding-bottom: 16px;
 }
 
+.dishes_cart_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
 .add_to_cart {
   cursor: pointer;
 }
@@ -36,20 +43,33 @@
 
 .badge_style {
   background-color: var(--side-color);
+  padding: 8px !important;
   font-size: 14px !important;
   color: black !important;
 }
 
 .badge_style > img {
-  height: 24px;
-  margin-right: 12px;
+  height: 16px;
+  margin-right: 8px;
 }
 
 
 .delete_from_cart {
   cursor: pointer;
+  width: 20px;
+  height: 20px;
 }
 
 .cart_quantity_btn {
   cursor: pointer;
+}
+
+.cart_icon {
+  width: 200px;
+  height: 150px;
+}
+
+.cart_icon > img {
+  width: 56px;
+  height: 56px;
 }
