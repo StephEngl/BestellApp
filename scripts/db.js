@@ -80,9 +80,9 @@ const sides = [
 const desserts = [
   {
     "id": 401,
-    "name": "Veganer Blaubeerkuchen",
+    "name": "Blaubeerkuchen",
     "price": 4.8,
-    "description": "Saftiger Kuchen mit wilden nordischen Blaubeeren",
+    "description": "Saftiger Kuchen mit wilden nordischen Blaubeeren, vegan",
     "amount": 0
   },
   {

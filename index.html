@@ -21,7 +21,10 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
     <script src="./scripts/db.js" defer></script>
     <script src="./scripts/templates.js" defer></script>
     <script src="./script.js" defer></script>
@@ -34,7 +37,11 @@
   <body onload="onInit()">
     <header>
       <nav>
-        <img class="rounded-4" src="assets/img/PlantHeroLogoDark.jpg" alt="Logo" />
+        <img
+          class="rounded-4"
+          src="assets/img/PlantHeroLogoDark.jpg"
+          alt="Logo"
+        />
       </nav>
     </header>
     <main>
@@ -46,58 +53,82 @@
           </div>
           <div class="hero_description">
             <h2>Mitternachtssonne</h2>
-            <span class="mb-2">Nordisches Restaurant mit Seele - Vegetarische Küche unter der Mitternachtssonne</span>
-            <div class="d-flex align-items-start gap-3 flex-column flex-sm-row gap-sm-5">
+            <span class="mb-2"
+              >Nordisches Restaurant mit Seele - Vegetarische Küche unter der
+              Mitternachtssonne</span
+            >
+            <div
+              class="d-flex align-items-start gap-3 flex-column flex-sm-row gap-sm-5"
+            >
               <span class="rating"
                 ><img
                   src="assets/icons/ratingStar.svg"
                   alt="Viereinhalb Sterne"
                 /><b>4,5</b> (250+)</span
               >
-              <div class="badge badge_style"
-                ><img src="assets/icons/cart.svg" alt="" />Mind. 21€</div
-              >
-              <div class="badge badge_style"
-                ><img src="assets/icons/deliveryIcon.svg" alt="" />3,50€</div
-              >
+              <div class="badge badge_style">
+                <img src="assets/icons/cart.svg" alt="" />Mind. 21€
+              </div>
+              <div class="badge badge_style">
+                <img src="assets/icons/deliveryIcon.svg" alt="" />3,50€
+              </div>
             </div>
-
           </div>
         </div>
-        <div class="categories_wrapper d-flex flex-column flex-sm-row justify-content-between align-items-center p-3" id="categories_wrapper">Kategorien</div>
-        <div class="card_container" id="card_container"></div>
+        <!-- Categories -->
+        <div
+          class="categories_wrapper d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 p-3"
+          id="categories_wrapper"
+        >
+          Kategorien
+        </div>
+
+        <!-- Dish Cards -->
+        <div class="card_container w-100 px-3 px-sm-5" id="card_container"></div>
+
+        <!-- Responsive Cart Button -->
+        <div
+          class="sticky-bottom pb-3 mb-3 w-100 d-flex justify-content-center align-items-center d-lg-none"
+        >
+          <button
+            onclick="openCartDialog()"
+            class="button_responsive_cart btn btn-secondary btn-lg w-50"
+          >
+            Warenkorb
+          </button>
+        </div>
       </div>
+
+      <!-- Responsive Cart Dialog -->
+      <dialog class="responsive_cart" id="responsive_cart" onmousedown="closeCardDialog(event)">
+        <div class="w-75 mx-auto d-flex flex-column align-items-center" id="dialog_content"></div>
+      </dialog>
+      <!-- Cart Section -->
       <div class="cart_wrapper d-none d-lg-flex">
         <div class="cart w-100" id="cart">
           <div class="p-3 border-bottom border-dark">
             <h3 class="d-flex justify-content-center">Warenkorb</h3>
           </div>
-          
-          <div class="empty_cart border-bottom border-dark p-3 d-flex flex-column align-items-center" id="empty_cart">
-            <div class="cart_icon d-flex justify-content-center align-items-center">
-              <img src="assets/icons/cart.svg" alt="Warenkorb-Symbol">
+          <!-- Empty Cart -->
+          <div
+            class="empty_cart border-bottom border-dark p-3 d-flex flex-column align-items-center"
+            id="empty_cart"
+          >
+            <div
+              class="cart_icon d-flex justify-content-center align-items-center"
+            >
+              <img src="assets/icons/cart.svg" alt="Warenkorb-Symbol" />
             </div>
-            <p class="text-center">Grüner als unser Menü ist nur dein leerer Warenkorb. Lass uns das
-              ändern!</p>
+            <p class="text-center">
+              Grüner als unser Menü ist nur dein leerer Warenkorb. Lass uns das
+              ändern!
+            </p>
           </div>
-          <div class="d-none d-flex flex-column align-items-center" id="fill_cart_container">
-            <div class="btn-group delivery_or_pickup mt-3 rounded-pill text-bg-secondary mb-4" id="delivery_or_pickup">
-              <button onclick="setDeliveryPrice('delivery'); toggleFilter('delivery');" class="btn btn-secondary btn_img d-flex active" id="delivery">
-                <img class="me-2" src="assets/icons/deliveryIcon.svg">
-                Lieferung
-              </button>
-              <button onclick="setDeliveryPrice('pickup'); toggleFilter('pickup');" class="btn btn-secondary btn_img d-flex" id="pickup">
-                <img class="me-2"  src="assets/icons/pickupIcon.svg">
-                Abholung
-              </butto>
-            </div>
-            <div class="filled_cart w-100" id="fill_cart"></div>
-            <div class="border-bottom border-dark p-3 w-100" id="costs_of_order"></div>
-            <button class="btn mt-3 btn-secondary btn-lg d-flex align-items-center gap-3">
-              <p class="mb-0">Bezahlen</p>
-              <p class="mb-0" id="sum_button">50€</p>
-            </button>
-          </div>
+          <!-- Cart -->
+          <div
+            class="d-none d-flex flex-column align-items-center"
+            id="fill_cart_container"
+          ></div>
         </div>
       </div>
     </main>

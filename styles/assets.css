@@ -14,13 +14,14 @@
 .dishes_wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   padding-bottom: 16px;
 }
 
 .dishes_cart_wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding-bottom: 8px;
 }
 
@@ -77,4 +78,19 @@
 .btn_img > img {
   width: 20px;
   height: 20px;
+}
+
+.button_responsive_cart {
+  background-color: var(--side-color) !important;
+  transition: all 150ms !important;  
+}
+
+.button_responsive_cart:hover {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2) !important;
+  scale: 1.03;
+}
+
+.input_width {
+  max-width: 50px;
+  border-radius: 12px;
 }
