@@ -1,5 +1,6 @@
 let keysMyDishes = Object.keys(myDishes);
 let cart = [];
+let deliveryPrice = "3,50€";
 
 function onInit() {
   renderCategoriesToSlider();
@@ -50,7 +51,7 @@ function addToCart(index, category) {
     increaseCartDishAmount(cartIndex);
   }
   renderCart();
-  getSubtotal();
+  getTotalCosts();
 }
 
 function pushToCartArray(index, category) {
@@ -82,7 +83,7 @@ function getCartDishIndex(idToFind) {
 function increaseCartDishAmount(indexCart) {
   cart[indexCart].amount++;
   renderCart();
-  getSubtotal();
+  getTotalCosts();
 }
 
 function decreaseCartDishAmount(indexCart) {
@@ -93,7 +94,7 @@ function decreaseCartDishAmount(indexCart) {
   else {
     deleteDishFromCart(indexCart);
   }
-  getSubtotal();
+  getTotalCosts();
 }
 
 function deleteDishFromCart(indexCart) {
@@ -101,12 +102,42 @@ function deleteDishFromCart(indexCart) {
   renderCart();
 }
 
+function getTotalCosts() {
+  let shipment = Number(document.getElementById("shipment").innerHTML.slice(0, -1).replace(',', '.'));
+  let total = document.getElementById("total");
+  total.innerHTML = "";
+  let totalCosts = getSubtotal() + shipment;
+  let totalCostsString = String(totalCosts.toFixed(2)).replace(".", ",") + "€"
+  let sumButton = document.getElementById("sum_button");
+  total.innerHTML = totalCostsString;
+  sumButton.innerHTML = totalCostsString;
+}
+
 function getSubtotal() {
   let subtotal = 0;
   for (let indexSub = 0; indexSub < cart.length; indexSub++) {
     subtotal += cart[indexSub].amount * cart[indexSub].price
   }
-  document.getElementById("subtotal").innerHTML = subtotal.toFixed(2).replace('.', ',');
+  document.getElementById("subtotal").innerHTML = subtotal.toFixed(2).replace('.', ',') + "€";
+  return subtotal;
+}
+
+function setDeliveryPrice(id) {
+  deliveryPrice = "3,50€"
+  if ("pickup" === id) {
+    deliveryPrice = "0,00€"
+  }
+  document.getElementById("shipment").innerHTML = deliveryPrice;
+  getTotalCosts();
+}
+
+// Highlight Selected Delivery Option
+function toggleFilter(id) {
+  if (document.getElementById(id).classList.contains("active")) {
+    return;
+  }
+  document.getElementById("delivery").classList.toggle("active");
+  document.getElementById("pickup").classList.toggle("active");
 }
 
 // Local Storage

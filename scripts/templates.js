@@ -1,7 +1,7 @@
 function getDishCardsTemplate(index) {
   return /*html*/ `
-<div class="card card_style position_static w-75" id="${keysMyDishes[index]}" style="width: 18rem;">
-  <img id="card_image" src="${categoryImages[index]}" class="card-img-top image_dimensions" alt="Essen" >
+<div class="card card_style position_static w-75 w-sm-100" id="${keysMyDishes[index]}" style="width: 18rem;">
+  <img id="card_image_${index}" src="${categoryImages[index]}" class="card-img-top image_dimensions" alt="Essen" >
   <div class="card-body">
     <h4 class="text_color_white card-title mb-4">${keysMyDishes[index]}</h4>
     <div class="" id="dishes_${index}">
@@ -13,7 +13,7 @@ function getDishCardsTemplate(index) {
 
 function getCategorySliderTemplate(index) {
   return /*html*/ `
-    <a class="category_links" id="categories" href="#${keysMyDishes[index]}">${keysMyDishes[index]}</a>
+    <a class="category_links" id="categories" href="#card_image_${index}">${keysMyDishes[index]}</a>
     `;
 }
 
@@ -66,11 +66,11 @@ function getCartCostTemplate() {
 </div>
 <div class="d-flex justify-content-between" id="delivery_costs">
   <p>Lieferkosten</p>
-  <p>3,50€</p>
+  <p id="shipment">${deliveryPrice}</p>
 </div>
 <div class="d-flex justify-content-between">
-  <p>Gesamt</p>
-  <p id="total">50€</p>
+  <p class="mb-0">Gesamt</p>
+  <p class="mb-0" id="total">50€</p>
 </div>
 `;
 }

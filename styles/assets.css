@@ -29,16 +29,17 @@
 }
 
 .restaurant_logo_wrapper {
-  height: 200px;
-  position: relative;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .restaurant_logo {
-  width: 180px;
-  position: absolute;
-  left: calc(50% - 90px);
-  top: 80px;
+  width: 156px;
+  margin-top: -50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .badge_style {
@@ -52,7 +53,6 @@
   height: 16px;
   margin-right: 8px;
 }
-
 
 .delete_from_cart {
   cursor: pointer;
@@ -72,4 +72,9 @@
 .cart_icon > img {
   width: 56px;
   height: 56px;
+}
+
+.btn_img > img {
+  width: 20px;
+  height: 20px;
 }

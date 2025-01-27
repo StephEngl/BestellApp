@@ -38,7 +38,7 @@
       </nav>
     </header>
     <main>
-      <div class="content_wrapper">
+      <div class="content_wrapper w-100">
         <div class="hero_container">
           <div class="restaurant_logo_wrapper">
             <div class="hero_img"></div>
@@ -47,7 +47,7 @@
           <div class="hero_description">
             <h2>Mitternachtssonne</h2>
             <span class="mb-2">Nordisches Restaurant mit Seele - Vegetarische Küche unter der Mitternachtssonne</span>
-            <div class="restaurant_description">
+            <div class="d-flex align-items-start gap-3 flex-column flex-sm-row gap-sm-5">
               <span class="rating"
                 ><img
                   src="assets/icons/ratingStar.svg"
@@ -64,10 +64,10 @@
 
           </div>
         </div>
-        <div class="categories_wrapper" id="categories_wrapper">Kategorien</div>
+        <div class="categories_wrapper d-flex flex-column flex-sm-row justify-content-between align-items-center p-3" id="categories_wrapper">Kategorien</div>
         <div class="card_container" id="card_container"></div>
       </div>
-      <div class="cart_wrapper">
+      <div class="cart_wrapper d-none d-lg-flex">
         <div class="cart w-100" id="cart">
           <div class="p-3 border-bottom border-dark">
             <h3 class="d-flex justify-content-center">Warenkorb</h3>
@@ -81,13 +81,19 @@
               ändern!</p>
           </div>
           <div class="d-none d-flex flex-column align-items-center" id="fill_cart_container">
-            <div class="delivery_or_pickup badge rounded-pill text-bg-secondary d-flex" id="delivery_or_pickup">
-              <div class="delivery d-flex"><img src="assets/icons/deliveryIcon.svg" alt=""><p>Lieferung</p></div>
-              <div class="pickup"><img src="assets/icons/deliveryIcon.svg" alt=""><p>Abholung</p></div>
+            <div class="btn-group delivery_or_pickup mt-3 rounded-pill text-bg-secondary mb-4" id="delivery_or_pickup">
+              <button onclick="setDeliveryPrice('delivery'); toggleFilter('delivery');" class="btn btn-secondary btn_img d-flex active" id="delivery">
+                <img class="me-2" src="assets/icons/deliveryIcon.svg">
+                Lieferung
+              </button>
+              <button onclick="setDeliveryPrice('pickup'); toggleFilter('pickup');" class="btn btn-secondary btn_img d-flex" id="pickup">
+                <img class="me-2"  src="assets/icons/pickupIcon.svg">
+                Abholung
+              </butto>
             </div>
             <div class="filled_cart w-100" id="fill_cart"></div>
             <div class="border-bottom border-dark p-3 w-100" id="costs_of_order"></div>
-            <button class="btn btn-secondary btn-lg d-flex align-items-center gap-3">
+            <button class="btn mt-3 btn-secondary btn-lg d-flex align-items-center gap-3">
               <p class="mb-0">Bezahlen</p>
               <p class="mb-0" id="sum_button">50€</p>
             </button>

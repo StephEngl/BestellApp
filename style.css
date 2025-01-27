@@ -82,12 +82,6 @@ main {
   margin: var(--main-margin);
 }
 
-.restaurant_description {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-}
-
 .rating {
   display: flex;
   align-items: flex-start;
@@ -102,11 +96,6 @@ main {
 .categories_wrapper {
   background-color: var(--mark-color);
   width: 100%;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 24px;
   position: sticky;
   top: 112px;
 }
@@ -137,6 +126,12 @@ main {
 .image_dimensions {
   height: 256px;
   object-fit: cover;
+}
+
+@media screen and (max-width: 880px) {
+  .cart_wrapper {
+    display: none;
+  }
 }
 
 /*Footer Section */
