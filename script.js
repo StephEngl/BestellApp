@@ -201,17 +201,25 @@ function toggleFilter(id) {
     return;
   }
   if ("pickup_fill_cart" === id || "pickup_fill_cart_responsive" === id) {
-    document.getElementById("pickup_fill_cart").classList.add("active");
-    document.getElementById("pickup_fill_cart_responsive").classList.add("active");
-    document.getElementById("delivery_fill_cart").classList.remove("active");
-    document.getElementById("delivery_fill_cart_responsive").classList.remove("active");
+    badgePickupActive();
   }
   else {
-    document.getElementById("pickup_fill_cart").classList.remove("active");
-    document.getElementById("pickup_fill_cart_responsive").classList.remove("active");
-    document.getElementById("delivery_fill_cart").classList.add("active");
-    document.getElementById("delivery_fill_cart_responsive").classList.add("active");
+    badgeDeliveryActive();
   }
+}
+
+function badgePickupActive() {
+  document.getElementById("pickup_fill_cart").classList.add("active");
+  document.getElementById("pickup_fill_cart_responsive").classList.add("active");
+  document.getElementById("delivery_fill_cart").classList.remove("active");
+  document.getElementById("delivery_fill_cart_responsive").classList.remove("active");
+}
+
+function badgeDeliveryActive() {
+  document.getElementById("pickup_fill_cart").classList.remove("active");
+  document.getElementById("pickup_fill_cart_responsive").classList.remove("active");
+  document.getElementById("delivery_fill_cart").classList.add("active");
+  document.getElementById("delivery_fill_cart_responsive").classList.add("active");
 }
 
 // Enable/Disable Order Buttons
