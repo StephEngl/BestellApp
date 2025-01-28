@@ -189,9 +189,10 @@ function setDeliveryPrice(id) {
   if ("pickup_fill_cart" === id || "pickup_fill_cart_responsive" === id) {
     deliveryPrice = "0,00€";
   }
-  document.getElementById("shipment2").innerHTML = deliveryPrice;
-  document.getElementById("shipment1").innerHTML = deliveryPrice;
-  getTotalCosts();
+  for (let index = 1; index <= 2; index++) {
+    document.getElementById("shipment"+index).innerHTML = deliveryPrice;
+    getTotalCosts(index);
+  }
 }
 
 // Highlight Selected Delivery Option
@@ -199,8 +200,18 @@ function toggleFilter(id) {
   if (document.getElementById(id).classList.contains("active")) {
     return;
   }
-  document.getElementById("delivery").classList.toggle("active");
-  document.getElementById("pickup").classList.toggle("active");
+  if ("pickup_fill_cart" === id || "pickup_fill_cart_responsive" === id) {
+    document.getElementById("pickup_fill_cart").classList.add("active");
+    document.getElementById("pickup_fill_cart_responsive").classList.add("active");
+    document.getElementById("delivery_fill_cart").classList.remove("active");
+    document.getElementById("delivery_fill_cart_responsive").classList.remove("active");
+  }
+  else {
+    document.getElementById("pickup_fill_cart").classList.remove("active");
+    document.getElementById("pickup_fill_cart_responsive").classList.remove("active");
+    document.getElementById("delivery_fill_cart").classList.add("active");
+    document.getElementById("delivery_fill_cart_responsive").classList.add("active");
+  }
 }
 
 // Enable/Disable Order Buttons
