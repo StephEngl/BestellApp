@@ -92,9 +92,10 @@
         >
           <button
             onclick="openCartDialog()"
-            class="button_responsive_cart btn btn-secondary btn-lg w-50"
+            class="button_responsive_cart d-flex gap-3 justify-content-center align-items-center btn btn-secondary btn-lg w-50" id
           >
             Warenkorb
+            <p class="mb-0" id="cart_button_responsive">50€</p>
           </button>
         </div>
       </div>
@@ -130,9 +131,14 @@
             id="fill_cart_container"
           ></div>
           <!-- Order Success Message -->
-          <div class="d-none order_success" id="ordersuccess">
+          <div class="d-none order_success border-bottom border-dark p-3 d-flex flex-column align-items-center" id="order_success">
+            <div
+            class="cart_icon d-flex justify-content-center align-items-center"
+          >
+            <img src="assets/icons/fire.svg" alt="Feuer-Symbol" />
+          </div>
             <p class="text-center">
-              Bestellung erfolgreich! Magen, halte durch! 🍽️
+              Wir sind Feuer und Flamme für deine Bestellung! <br> Magen, halte durch - wir kommen!
             </p>
           </div>
         </div>

@@ -13,3 +13,11 @@
     top: calc(112px + var(--main-margin));
     margin: var(--main-margin);
 }
+
+
+@media screen and (min-width: 992px) {
+    .filled_cart {
+        height: 500px;
+        overflow-y: auto;
+    }
+}

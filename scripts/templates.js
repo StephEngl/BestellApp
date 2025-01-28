@@ -35,20 +35,20 @@ function getDishesTemplate(index, category) {
 function getCartTemplate(id_cart) {
   return /*html*/ `
   <div class="btn-group delivery_or_pickup mt-3 rounded-pill text-bg-secondary mb-4" id="delivery_or_pickup">
-              <button onclick="setDeliveryPrice('delivery'); toggleFilter('delivery');" class="btn btn-secondary btn_img d-flex active" id="delivery">
+              <button onclick="setDeliveryPrice('delivery_${id_cart}'); toggleFilter('delivery_${id_cart}');" class="btn btn-secondary btn_img d-flex active" id="delivery_${id_cart}">
                 <img class="me-2" src="assets/icons/deliveryIcon.svg">
                 Lieferung
               </button>
-              <button onclick="setDeliveryPrice('pickup'); toggleFilter('pickup');" class="btn btn-secondary btn_img d-flex" id="pickup">
+              <button onclick="setDeliveryPrice('pickup_${id_cart}'); toggleFilter('pickup_${id_cart}');" class="btn btn-secondary btn_img d-flex" id="pickup_${id_cart}">
                 <img class="me-2"  src="assets/icons/pickupIcon.svg">
                 Abholung
               </button>
             </div>
             <div class="filled_cart w-100" id="${id_cart}"></div>
-            <div class="border-bottom border-dark p-3 w-100" id="costs_of_order"></div>
-            <button class="btn mt-3 btn-secondary disabled btn-lg d-flex align-items-center gap-3" id="order_button">
-              <p class="mb-0">Bezahlen</p>
-              <p class="mb-0" id="sum_button">50€</p>
+            <div class="border-bottom border-dark p-3 w-100" id="costs_of_order_${id_cart}"></div>
+            <button onclick="payOrder()" class="btn mt-3 btn-secondary disabled btn-lg d-flex align-items-center gap-3" id="order_button_${id_cart}">
+              <p class="mb-0">Bestellen</p>
+              <p class="mb-0" id="sum_button_${id_cart}">50€</p>
             </button>
   `;
 }
@@ -79,19 +79,19 @@ function getCartDishesTemplate(index) {
     `;
 }
 
-function getCartCostTemplate() {
+function getCartCostTemplate(index) {
   return /*html*/ `
 <div class="d-flex justify-content-between">
   <p>Zwischensumme</p>
-  <p id="subtotal">50€</p>
+  <p id="subtotal${index}">50€</p>
 </div>
 <div class="d-flex justify-content-between" id="delivery_costs">
   <p>Lieferkosten</p>
-  <p id="shipment">${deliveryPrice}</p>
+  <p id="shipment${index}">${deliveryPrice}</p>
 </div>
 <div class="d-flex justify-content-between">
   <p class="mb-0">Gesamt</p>
-  <p class="mb-0" id="total">50€</p>
+  <p class="mb-0" id="total${index}">50€</p>
 </div>
 `;
 }
