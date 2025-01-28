@@ -11,6 +11,9 @@ function onInit() {
   document.getElementById("dialog_content").innerHTML = getCartTemplate(
     "fill_cart_responsive"
   );
+  document.getElementById("empty_cart").innerHTML = getEmptyCartTemplate();
+  document.getElementById("empty_cart_responsive").innerHTML =
+    getEmptyCartTemplate();
 }
 
 function renderCategoriesToSlider() {
@@ -46,9 +49,20 @@ function renderDishes(category, indexCard) {
   }
 }
 
+function renderCart() {
+  fillCart();
+  document.getElementById("costs_of_order_fill_cart").innerHTML =
+    getCartCostTemplate(1);
+  document.getElementById("costs_of_order_fill_cart_responsive").innerHTML =
+    getCartCostTemplate(2);
+    for (let indexCart = 1; indexCart <= 2; indexCart++) {
+      getTotalCosts(indexCart);
+      enableOrDisableOrderButton(indexCart);
+    }
+}
+
 function addToCart(index, category) {
-  document.getElementById("empty_cart").classList.add("d-none");
-  document.getElementById("fill_cart_container").classList.remove("d-none");
+  changeEmptyCartToFilled();
   let idToFind = myDishes[category][index].id;
   const cartIndex = getCartDishIndex(idToFind);
   if (-1 == cartIndex) {
@@ -59,6 +73,13 @@ function addToCart(index, category) {
   renderCart();
 }
 
+function changeEmptyCartToFilled() {
+  document.getElementById("empty_cart").classList.add("d-none");
+  document.getElementById("empty_cart_responsive").classList.add("d-none");
+  document.getElementById("fill_cart_container").classList.remove("d-none");
+  document.getElementById("dialog_content").classList.remove("d-none");
+}
+
 function pushToCartArray(index, category) {
   cart.push({
     id: myDishes[category][index].id,
@@ -66,18 +87,6 @@ function pushToCartArray(index, category) {
     amount: 1,
     price: myDishes[category][index].price,
   });
-}
-
-function renderCart() {
-  fillCart();
-  document.getElementById("costs_of_order_fill_cart").innerHTML =
-    getCartCostTemplate(1);
-  document.getElementById("costs_of_order_fill_cart_responsive").innerHTML =
-    getCartCostTemplate(2);
-  getTotalCosts(1);
-  getTotalCosts(2);
-  enableOrDisableOrderButton(1);
-  enableOrDisableOrderButton(2);
 }
 
 function fillCart() {
@@ -134,24 +143,33 @@ function deleteDishFromCart(indexCart) {
   enableOrDisableOrderButton(2);
 }
 
+
+// Calculate and assigning costs
 function getTotalCosts(index) {
-  let shipment = Number(
-    document
-      .getElementById("shipment" + index)
-      .innerHTML.slice(0, -1)
-      .replace(",", ".")
-  );
+  let shipment = convertShipmentStringToNumber(index);
   let total = document.getElementById("total" + index);
   total.innerHTML = "";
   let totalCosts = getSubtotal(index) + shipment;
   let totalCostsString = String(totalCosts.toFixed(2)).replace(".", ",") + "€";
   total.innerHTML = totalCostsString;
-  setTotalToButtons(totalCostsString);
+  if (3.5 < totalCosts) {
+    setTotalToButtons(totalCostsString);
+  }
+}
+
+function convertShipmentStringToNumber(index) {
+  return Number(
+    document
+      .getElementById("shipment" + index)
+      .innerHTML.slice(0, -1)
+      .replace(",", ".")
+  )
 }
 
 function setTotalToButtons(totalCostsString) {
   document.getElementById("sum_button_fill_cart").innerHTML = totalCostsString;
-  document.getElementById("sum_button_fill_cart_responsive").innerHTML = totalCostsString;
+  document.getElementById("sum_button_fill_cart_responsive").innerHTML =
+    totalCostsString;
   document.getElementById("cart_button_responsive").innerHTML =
     totalCostsString;
 }
@@ -176,6 +194,16 @@ function setDeliveryPrice(id) {
   getTotalCosts();
 }
 
+// Highlight Selected Delivery Option
+function toggleFilter(id) {
+  if (document.getElementById(id).classList.contains("active")) {
+    return;
+  }
+  document.getElementById("delivery").classList.toggle("active");
+  document.getElementById("pickup").classList.toggle("active");
+}
+
+// Enable/Disable Order Buttons
 function enableOrDisableOrderButton(index) {
   if (21 <= getSubtotal(index)) {
     enableOrderButtons();
@@ -189,13 +217,14 @@ function enableOrDisableOrderButton(index) {
 
 function enableOrderButtons() {
   document
-  .getElementById("order_button_fill_cart")
-  .classList.remove("disabled");
-document
-  .getElementById("order_button_fill_cart_responsive")
-  .classList.remove("disabled");
+    .getElementById("order_button_fill_cart")
+    .classList.remove("disabled");
+  document
+    .getElementById("order_button_fill_cart_responsive")
+    .classList.remove("disabled");
 }
 
+// Responsive Cart Dialog
 function openCartDialog() {
   cartDialog.showModal();
   renderCart();
@@ -210,15 +239,10 @@ function closeCardDialog(event) {
 function payOrder() {
   document.getElementById("fill_cart_container").classList.add("d-none");
   document.getElementById("order_success").classList.remove("d-none");
-}
-
-// Highlight Selected Delivery Option
-function toggleFilter(id) {
-  if (document.getElementById(id).classList.contains("active")) {
-    return;
-  }
-  document.getElementById("delivery").classList.toggle("active");
-  document.getElementById("pickup").classList.toggle("active");
+  document.getElementById("order_success").innerHTML = getOrderSuccessTemplate();
+  document.getElementById("dialog_content").classList.add("d-none");
+  document.getElementById("order_success_responsive").classList.remove("d-none");
+  document.getElementById("order_success_responsive").innerHTML = getOrderSuccessTemplate();
 }
 
 // Local Storage

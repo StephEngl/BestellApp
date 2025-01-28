@@ -32,6 +32,30 @@ function getDishesTemplate(index, category) {
   `;
 }
 
+function getEmptyCartTemplate() {
+  return /*html*/ `
+  <div class="cart_icon d-flex justify-content-center align-items-center">
+    <img src="assets/icons/cart.svg" alt="Warenkorb-Symbol" />
+  </div>
+  <p class="text-center">
+    Grüner als unser Menü ist nur dein leerer Warenkorb. Lass uns das
+    ändern!
+  </p>
+  `;
+}
+
+function getOrderSuccessTemplate() {
+  return /*html*/ `
+    <div class="cart_icon d-flex justify-content-center align-items-center">
+      <img src="assets/icons/fire.svg" alt="Feuer-Symbol" />
+    </div>
+    <p class="text-center">
+      Wir sind Feuer und Flamme für deine Bestellung! <br />
+      Magen, halte durch - wir kommen!
+    </p>
+  `;
+}
+
 function getCartTemplate(id_cart) {
   return /*html*/ `
   <div class="btn-group delivery_or_pickup mt-3 rounded-pill text-bg-secondary mb-4" id="delivery_or_pickup">
@@ -65,7 +89,9 @@ function getCartDishesTemplate(index) {
           <div onclick="decreaseCartDishAmount(${index})" class="minus cart_quantity_btn">
             <i class="bi bi-dash text-success"></i>
           </div>
-          <input onchange="onChangeAmount(${index})" class="input_width text-center border-0 py-0 box" id="input_amount_${index}" type="text" placeholder="" aria-label="default input example" value="${cart[index].amount}">
+          <input onchange="onChangeAmount(${index})" class="input_width text-center border-0 py-0 box" id="input_amount_${index}" type="text" placeholder="" aria-label="default input example" value="${
+    cart[index].amount
+  }">
           <div onclick="increaseCartDishAmount(${index})" class="plus cart_quantity_btn">
             <i class="bi bi-plus text-success"></i>
           </div>

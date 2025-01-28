@@ -84,7 +84,10 @@
         </div>
 
         <!-- Dish Cards -->
-        <div class="card_container w-100 px-3 px-sm-5" id="card_container"></div>
+        <div
+          class="card_container w-100 px-3 px-sm-5"
+          id="card_container"
+        ></div>
 
         <!-- Responsive Cart Button -->
         <div
@@ -92,17 +95,36 @@
         >
           <button
             onclick="openCartDialog()"
-            class="button_responsive_cart d-flex gap-3 justify-content-center align-items-center btn btn-secondary btn-lg w-50" id
+            class="button_responsive_cart d-flex gap-3 justify-content-center align-items-center btn btn-secondary btn-lg w-50"
+            id
           >
             Warenkorb
-            <p class="mb-0" id="cart_button_responsive">50€</p>
+            <p class="mb-0" id="cart_button_responsive"></p>
           </button>
         </div>
       </div>
 
       <!-- Responsive Cart Dialog -->
-      <dialog class="responsive_cart" id="responsive_cart" onmousedown="closeCardDialog(event)">
-        <div class="w-75 mx-auto d-flex flex-column align-items-center" id="dialog_content"></div>
+      <dialog
+        class="responsive_cart"
+        id="responsive_cart"
+        onmousedown="closeCardDialog(event)"
+      >
+        <!-- Empty Responsive Cart -->
+        <div
+          class="empty_cart border-bottom border-dark p-3 d-flex flex-column align-items-center"
+          id="empty_cart_responsive"
+        ></div>
+        <!-- Responsive Cart Filled -->
+        <div
+          class="w-75 d-none mx-auto d-flex flex-column align-items-center"
+          id="dialog_content"
+        ></div>
+        <!-- Order Success Responsive -->
+        <div
+          class="d-none order_success border-bottom border-dark p-3 d-flex flex-column align-items-center"
+          id="order_success_responsive"
+        ></div>
       </dialog>
       <!-- Cart Section -->
       <div class="cart_wrapper d-none d-lg-flex">
@@ -114,33 +136,17 @@
           <div
             class="empty_cart border-bottom border-dark p-3 d-flex flex-column align-items-center"
             id="empty_cart"
-          >
-            <div
-              class="cart_icon d-flex justify-content-center align-items-center"
-            >
-              <img src="assets/icons/cart.svg" alt="Warenkorb-Symbol" />
-            </div>
-            <p class="text-center">
-              Grüner als unser Menü ist nur dein leerer Warenkorb. Lass uns das
-              ändern!
-            </p>
-          </div>
-          <!-- Cart -->
+          ></div>
+          <!-- Cart Filled -->
           <div
             class="d-none d-flex flex-column align-items-center"
             id="fill_cart_container"
           ></div>
           <!-- Order Success Message -->
-          <div class="d-none order_success border-bottom border-dark p-3 d-flex flex-column align-items-center" id="order_success">
-            <div
-            class="cart_icon d-flex justify-content-center align-items-center"
-          >
-            <img src="assets/icons/fire.svg" alt="Feuer-Symbol" />
-          </div>
-            <p class="text-center">
-              Wir sind Feuer und Flamme für deine Bestellung! <br> Magen, halte durch - wir kommen!
-            </p>
-          </div>
+          <div
+            class="d-none order_success border-bottom border-dark p-3 d-flex flex-column align-items-center"
+            id="order_success"
+          ></div>
         </div>
       </div>
     </main>
