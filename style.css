@@ -129,7 +129,7 @@ main {
 }
 
 dialog {
-  background-color: var(--side-color);
+  background-color: rgb(174, 230, 157);
   color: white;
   max-width: var(--max-width);
   top: 10%;

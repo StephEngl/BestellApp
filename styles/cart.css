@@ -14,11 +14,10 @@
   margin: var(--main-margin);
 }
 
-@media screen and (min-width: 992px) {
-  .filled_cart {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    overflow-y: auto;
-  }
+.filled_cart {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: calc(60vh - 150px);
 }
