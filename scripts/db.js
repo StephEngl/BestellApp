@@ -132,7 +132,7 @@ const drinks = [
   }
 ]
 
-const myDishes = {
+let myDishes = {
   Vorspeisen: starter,
   Hauptgerichte: maindishes,
   Beilagen: sides,

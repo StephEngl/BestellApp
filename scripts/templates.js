@@ -49,7 +49,7 @@ function getOrderSuccessTemplate() {
     <div class="cart_icon d-flex justify-content-center align-items-center">
       <img src="assets/icons/fire.svg" alt="Feuer-Symbol" />
     </div>
-    <p class="text-center">
+    <p class="text-center text-black">
       Wir sind Feuer und Flamme für deine Bestellung! <br />
       Magen, halte durch - wir kommen!
     </p>
@@ -69,7 +69,7 @@ function getCartTemplate(id_cart) {
               </button>
             </div>
             <div class="filled_cart w-100" id="${id_cart}"></div>
-            <div class="border-bottom border-dark p-3 w-100" id="costs_of_order_${id_cart}"></div>
+            <div class="text-black border-bottom border-dark p-3 w-100" id="costs_of_order_${id_cart}"></div>
             <button onclick="payOrder()" class="btn mt-3 btn-secondary disabled btn-lg d-flex align-items-center gap-3" id="order_button_${id_cart}">
               <p class="mb-0">Bestellen</p>
               <p class="mb-0" id="sum_button_${id_cart}">50€</p>

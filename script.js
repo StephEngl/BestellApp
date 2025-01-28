@@ -4,6 +4,7 @@ let cartDialog = document.getElementById("responsive_cart");
 let deliveryPrice = "3,50€";
 
 function onInit() {
+  getFromLocalStorage();
   renderCategoriesToSlider();
   renderCategories();
   document.getElementById("fill_cart_container").innerHTML =
@@ -11,9 +12,14 @@ function onInit() {
   document.getElementById("dialog_content").innerHTML = getCartTemplate(
     "fill_cart_responsive"
   );
-  document.getElementById("empty_cart").innerHTML = getEmptyCartTemplate();
-  document.getElementById("empty_cart_responsive").innerHTML =
-    getEmptyCartTemplate();
+  if (0 == cart.length) {
+    document.getElementById("empty_cart").innerHTML = getEmptyCartTemplate();
+    document.getElementById("empty_cart_responsive").innerHTML =
+      getEmptyCartTemplate();
+  } else {
+    changeEmptyCartToFilled();
+    renderCart();
+  }
 }
 
 function renderCategoriesToSlider() {
@@ -55,14 +61,15 @@ function renderCart() {
     getCartCostTemplate(1);
   document.getElementById("costs_of_order_fill_cart_responsive").innerHTML =
     getCartCostTemplate(2);
-    for (let indexCart = 1; indexCart <= 2; indexCart++) {
-      getTotalCosts(indexCart);
-      enableOrDisableOrderButton(indexCart);
-    }
+  for (let indexCart = 1; indexCart <= 2; indexCart++) {
+    getTotalCosts(indexCart);
+    enableOrDisableOrderButton(indexCart);
+  }
 }
 
 function addToCart(index, category) {
   changeEmptyCartToFilled();
+  hideSuccessContainer();
   let idToFind = myDishes[category][index].id;
   const cartIndex = getCartDishIndex(idToFind);
   if (-1 == cartIndex) {
@@ -71,6 +78,7 @@ function addToCart(index, category) {
     increaseCartDishAmount(cartIndex);
   }
   renderCart();
+  saveToLocalStorage();
 }
 
 function changeEmptyCartToFilled() {
@@ -116,6 +124,7 @@ function onChangeAmount(indexCart) {
   } else {
     deleteDishFromCart(indexCart);
   }
+  saveToLocalStorage();
 }
 
 function increaseCartDishAmount(indexCart) {
@@ -143,7 +152,6 @@ function deleteDishFromCart(indexCart) {
   enableOrDisableOrderButton(2);
 }
 
-
 // Calculate and assigning costs
 function getTotalCosts(index) {
   let shipment = convertShipmentStringToNumber(index);
@@ -163,7 +171,7 @@ function convertShipmentStringToNumber(index) {
       .getElementById("shipment" + index)
       .innerHTML.slice(0, -1)
       .replace(",", ".")
-  )
+  );
 }
 
 function setTotalToButtons(totalCostsString) {
@@ -190,7 +198,7 @@ function setDeliveryPrice(id) {
     deliveryPrice = "0,00€";
   }
   for (let index = 1; index <= 2; index++) {
-    document.getElementById("shipment"+index).innerHTML = deliveryPrice;
+    document.getElementById("shipment" + index).innerHTML = deliveryPrice;
     getTotalCosts(index);
   }
 }
@@ -202,24 +210,31 @@ function toggleFilter(id) {
   }
   if ("pickup_fill_cart" === id || "pickup_fill_cart_responsive" === id) {
     badgePickupActive();
-  }
-  else {
+  } else {
     badgeDeliveryActive();
   }
 }
 
 function badgePickupActive() {
   document.getElementById("pickup_fill_cart").classList.add("active");
-  document.getElementById("pickup_fill_cart_responsive").classList.add("active");
+  document
+    .getElementById("pickup_fill_cart_responsive")
+    .classList.add("active");
   document.getElementById("delivery_fill_cart").classList.remove("active");
-  document.getElementById("delivery_fill_cart_responsive").classList.remove("active");
+  document
+    .getElementById("delivery_fill_cart_responsive")
+    .classList.remove("active");
 }
 
 function badgeDeliveryActive() {
   document.getElementById("pickup_fill_cart").classList.remove("active");
-  document.getElementById("pickup_fill_cart_responsive").classList.remove("active");
+  document
+    .getElementById("pickup_fill_cart_responsive")
+    .classList.remove("active");
   document.getElementById("delivery_fill_cart").classList.add("active");
-  document.getElementById("delivery_fill_cart_responsive").classList.add("active");
+  document
+    .getElementById("delivery_fill_cart_responsive")
+    .classList.add("active");
 }
 
 // Enable/Disable Order Buttons
@@ -256,21 +271,38 @@ function closeCardDialog(event) {
 }
 
 function payOrder() {
+  cart = [];
+  showSuccessContainer();
   document.getElementById("fill_cart_container").classList.add("d-none");
-  document.getElementById("order_success").classList.remove("d-none");
-  document.getElementById("order_success").innerHTML = getOrderSuccessTemplate();
+  document.getElementById("order_success").innerHTML =
+    getOrderSuccessTemplate();
   document.getElementById("dialog_content").classList.add("d-none");
-  document.getElementById("order_success_responsive").classList.remove("d-none");
-  document.getElementById("order_success_responsive").innerHTML = getOrderSuccessTemplate();
+  document.getElementById("order_success_responsive").innerHTML =
+    getOrderSuccessTemplate();
+  document.getElementById("cart_button_responsive").innerHTML = "";
+  saveToLocalStorage()
+}
+
+function showSuccessContainer() {
+  document.getElementById("order_success").classList.remove("d-none");
+  document
+    .getElementById("order_success_responsive")
+    .classList.remove("d-none");
+}
+
+function hideSuccessContainer() {
+  document.getElementById("order_success").classList.add("d-none");
+  document.getElementById("order_success_responsive").classList.add("d-none");
 }
 
 // Local Storage
-function saveToLocalStorage() {}
+function saveToLocalStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 function getFromLocalStorage() {
-  let myDishes = JSON.parse(localStorage.getItem("myDishes"));
-  maindishes = myDishes.maindishes;
-  sides = myDishes.sides;
-  desserts = myDishes.desserts;
-  drinks = myDishes.drinks;
+  let cartStored = JSON.parse(localStorage.getItem("cart"));
+  if (null != cartStored) {
+    cart = cartStored;
+  }
 }

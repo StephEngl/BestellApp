@@ -19,5 +19,6 @@
   flex-direction: column;
   flex-grow: 1;
   overflow-y: auto;
-  max-height: calc(60vh - 150px);
+  max-height: calc(60vh - 170px);
+  color: black !important;
 }
