@@ -58,50 +58,93 @@ function getOrderSuccessTemplate() {
 
 function getCartTemplate(id_cart) {
   return /*html*/ `
-  <div class="btn-group delivery_or_pickup mt-3 rounded-pill text-bg-secondary mb-4" id="delivery_or_pickup">
-              <button onclick="setDeliveryPrice('delivery_${id_cart}'); toggleFilter('delivery_${id_cart}');" class="btn btn-secondary btn_img d-flex active" id="delivery_${id_cart}">
-                <img class="me-2" src="assets/icons/deliveryIcon.svg">
-                Lieferung
-              </button>
-              <button onclick="setDeliveryPrice('pickup_${id_cart}'); toggleFilter('pickup_${id_cart}');" class="btn btn-secondary btn_img d-flex" id="pickup_${id_cart}">
-                <img class="me-2"  src="assets/icons/pickupIcon.svg">
-                Abholung
-              </button>
-            </div>
-            <div class="filled_cart w-100" id="${id_cart}"></div>
-            <div class="text-black border-bottom border-dark p-3 w-100" id="costs_of_order_${id_cart}"></div>
-            <button onclick="payOrder()" class="btn mt-3 btn-secondary disabled btn-lg d-flex align-items-center gap-3" id="order_button_${id_cart}">
-              <p class="mb-0">Bestellen</p>
-              <p class="mb-0" id="sum_button_${id_cart}">50€</p>
-            </button>
+<div
+  class="btn-group delivery_or_pickup mt-3 rounded-pill text-bg-secondary mb-4"
+  id="delivery_or_pickup"
+>
+  <button
+    onclick="setDeliveryPrice('delivery_${id_cart}'); toggleFilter('delivery_${id_cart}');"
+    class="btn btn-secondary btn_img d-flex active"
+    id="delivery_${id_cart}"
+  >
+    <img class="me-2" src="assets/icons/deliveryIcon.svg" />
+    Lieferung
+  </button>
+  <button
+    onclick="setDeliveryPrice('pickup_${id_cart}'); toggleFilter('pickup_${id_cart}');"
+    class="btn btn-secondary btn_img d-flex"
+    id="pickup_${id_cart}"
+  >
+    <img class="me-2" src="assets/icons/pickupIcon.svg" />
+    Abholung
+  </button>
+</div>
+<div class="filled_cart w-100" id="${id_cart}"></div>
+<div
+  class="text-black border-bottom border-dark p-3 w-100"
+  id="costs_of_order_${id_cart}"
+></div>
+<button
+  onclick="payOrder()"
+  class="btn mt-3 btn-secondary disabled btn-lg d-flex align-items-center gap-3"
+  id="order_button_${id_cart}"
+>
+  <p class="mb-0">Bestellen</p>
+  <p class="mb-0" id="sum_button_${id_cart}">50€</p>
+</button>
   `;
 }
 
 function getCartDishesTemplate(index) {
   return /*html*/ `
-  <div class="border-bottom border-secondary p-3 position_static d-flex flex-column alignt-items-center" id='cart_dish_${index}'>
-      <div class="dishes_cart_wrapper">
-        <p>${cart[index].dish}</p>
-        <img class="delete_from_cart" onclick="deleteDishFromCart(${index})" src="assets/icons/dustbin.svg" alt="Papierkorb">
-      </div>
-      <div class="d-flex align-items-center justify-content-between gap-5">
-      <div class="d-flex align-items-center justify-content-between rounded-pill border border-dark px-1">
-          <div onclick="decreaseCartDishAmount(${index})" class="minus cart_quantity_btn">
-            <i class="bi bi-dash text-success"></i>
-          </div>
-          <input onchange="onChangeAmount(${index})" class="input_width text-center border-0 py-0 box" id="input_amount_${index}" type="text" placeholder="" aria-label="default input example" value="${
-    cart[index].amount
-  }">
-          <div onclick="increaseCartDishAmount(${index})" class="plus cart_quantity_btn">
-            <i class="bi bi-plus text-success"></i>
-          </div>
-      </div>
-      <div>
-          <div class="text-end price_cart">${cart[index].price
-            .toFixed(2)
-            .replace(".", ",")}€</div>
-      </div>
+  <div
+  class="border-bottom border-secondary p-3 position_static d-flex flex-column alignt-items-center"
+  id="cart_dish_${index}"
+>
+  <div class="dishes_cart_wrapper">
+    <p>${cart[index].dish}</p>
+    <img
+      class="delete_from_cart"
+      onclick="deleteDishFromCart(${index})"
+      src="assets/icons/dustbin.svg"
+      alt="Papierkorb"
+    />
   </div>
+  <div class="d-flex align-items-center justify-content-between gap-5">
+    <div
+      class="d-flex align-items-center justify-content-between rounded-pill border border-dark px-1"
+    >
+      <div
+        onclick="decreaseCartDishAmount(${index})"
+        class="minus cart_quantity_btn"
+      >
+        <i class="bi bi-dash text-success"></i>
+      </div>
+      <input
+        onchange="onChangeAmount(${index})"
+        class="input_width text-center border-0 py-0 box"
+        id="input_amount_${index}"
+        type="text"
+        placeholder=""
+        aria-label="default input example"
+        value="${
+cart[index].amount
+}"
+      />
+      <div
+        onclick="increaseCartDishAmount(${index})"
+        class="plus cart_quantity_btn"
+      >
+        <i class="bi bi-plus text-success"></i>
+      </div>
+    </div>
+    <div>
+      <div class="text-end price_cart">
+        ${cart[index].price .toFixed(2) .replace(".", ",")}€
+      </div>
+    </div>
+  </div>
+</div>
     `;
 }
 

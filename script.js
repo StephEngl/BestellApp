@@ -1,8 +1,16 @@
 let keysMyDishes = Object.keys(myDishes);
 let cart = [];
+/**
+ * Reference to the responsive cart dialog element.
+ * @type {HTMLElement}
+ */
 let cartDialog = document.getElementById("responsive_cart");
 let deliveryPrice = "3,50€";
 
+/**
+ * Initializes the application, loads data from localStorage,
+ * and renders the UI components.
+ */
 function onInit() {
   getFromLocalStorage();
   renderCategoriesToSlider();
@@ -13,13 +21,17 @@ function onInit() {
     "fill_cart_responsive"
   );
   if (0 == cart.length) {
-    document.getElementById("empty_cart").innerHTML = getEmptyCartTemplate();
-    document.getElementById("empty_cart_responsive").innerHTML =
-      getEmptyCartTemplate();
+    showEmptyCarts();
   } else {
     changeEmptyCartToFilled();
     renderCart();
   }
+}
+
+function showEmptyCarts() {
+  document.getElementById("empty_cart").innerHTML = getEmptyCartTemplate();
+  document.getElementById("empty_cart_responsive").innerHTML =
+    getEmptyCartTemplate();
 }
 
 function renderCategoriesToSlider() {
@@ -43,6 +55,11 @@ function renderCategories() {
   }
 }
 
+/**
+ * Renders dishes for a specific category.
+ * @param {string} category - The category name.
+ * @param {number} indexCard - The index of the category card.
+ */
 function renderDishes(category, indexCard) {
   let dish = document.getElementById("dishes_" + indexCard);
   dish.innerHTML = "";
@@ -67,6 +84,11 @@ function renderCart() {
   }
 }
 
+/**
+ * Adds a dish to the cart or increases its quantity if already present.
+ * @param {number} index - The index of the dish in its category.
+ * @param {string} category - The category of the dish.
+ */
 function addToCart(index, category) {
   changeEmptyCartToFilled();
   hideSuccessContainer();
@@ -127,6 +149,7 @@ function onChangeAmount(indexCart) {
   saveToLocalStorage();
 }
 
+// Changes amount of dishes in Cart
 function increaseCartDishAmount(indexCart) {
   cart[indexCart].amount++;
   document.getElementById(`input_amount_${indexCart}`).value =
@@ -270,6 +293,7 @@ function closeCardDialog(event) {
   }
 }
 
+// Pay order and show or hide success message
 function payOrder() {
   cart = [];
   showSuccessContainer();

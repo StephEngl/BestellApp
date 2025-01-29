@@ -22,3 +22,37 @@
   max-height: calc(60vh - 170px);
   color: black !important;
 }
+
+.dialog_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .dialog_content {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .responsive_cart {
+    padding: 0;
+  }
+
+  .delivery_or_pickup > button {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .delivery_or_pickup > button > img {
+    width: 16px;
+  }
+
+  .dialog_content > button {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+}
